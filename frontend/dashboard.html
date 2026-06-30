@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Powered YouTube Analytics Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <nav>
+        <h3>🎥 AI YouTube Analytics</h3>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h1>📊 Dashboard</h1>
+            <p>Live prediction insights from your backend</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="card stat-card">
+                <h3>Total Predictions</h3>
+                <div id="totalPredictions">0</div>
+            </div>
+            <div class="card stat-card">
+                <h3>Average Views</h3>
+                <div id="averageViews">0</div>
+            </div>
+        </div>
+
+        <div class="card chart-card">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    <script src="../js/dashboard.js"></script>
+</body>
+
+</html>
