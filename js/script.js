@@ -4,6 +4,7 @@
 
 const STORAGE_KEY = "preferred-backend-url";
 const API_BASES = [
+    "https://ai-powered-youtube.onrender.com",
     window.__API_BASE__,
     `http://${window.location.hostname}:8000`,
     "http://localhost:8000",
@@ -241,7 +242,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.error("Prediction failed:", error);
             statusEl.textContent = "❌ Backend connection failed";
             predictionEl.textContent = "Error";
-            alert("Backend is not reachable. Start it with: python -m uvicorn backend.app:app --reload");
+            alert("Unable to connect to the backend. Please try again in a few seconds.");
         }
     });
 

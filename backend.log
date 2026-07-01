@@ -375,3 +375,22 @@ PermissionError: [Errno 13] Permission denied: 'C:\\Users\\ViHarshita tripathi\\
 2026-07-01 14:08:16,731 - backend.app - INFO - ✅ Health check passed
 2026-07-01 14:08:16,758 - backend.routes.predict - INFO - History request received
 2026-07-01 14:08:16,761 - backend.routes.predict - INFO - ✅ History retrieved: 24 records
+2026-07-02 00:29:41,015 - backend.app - INFO - ============================================================
+2026-07-02 00:29:41,016 - backend.app - INFO - 🚀 Backend Starting Up...
+2026-07-02 00:29:41,016 - backend.app - INFO - ============================================================
+2026-07-02 00:29:41,017 - backend.database - INFO - Initializing database at C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\youtube.db
+2026-07-02 00:29:41,024 - backend.database - INFO - ✅ Database initialized successfully
+2026-07-02 00:29:41,025 - backend.app - INFO - ✅ Database initialized successfully
+2026-07-02 00:29:45,125 - backend.app - INFO - ✅ Health check passed
+2026-07-02 00:30:18,715 - backend.routes.predict - INFO - Stats request received
+2026-07-02 00:30:18,719 - backend.routes.predict - INFO - ✅ Stats retrieved: total=24, avg=89193
+2026-07-02 00:30:18,757 - backend.routes.predict - INFO - History request received
+2026-07-02 00:30:18,759 - backend.routes.predict - INFO - ✅ History retrieved: 24 records
+2026-07-02 00:30:33,316 - backend.routes.predict - INFO - Stats request received
+2026-07-02 00:30:33,321 - backend.routes.predict - INFO - ✅ Stats retrieved: total=24, avg=89193
+2026-07-02 00:30:33,327 - backend.routes.predict - INFO - History request received
+2026-07-02 00:30:33,329 - backend.routes.predict - INFO - ✅ History retrieved: 24 records
+2026-07-02 00:31:00,003 - backend.app - INFO - ✅ Health check passed
+2026-07-02 00:31:00,012 - backend.routes.predict - INFO - History request received
+2026-07-02 00:31:00,015 - backend.routes.predict - INFO - ✅ History retrieved: 24 records
+2026-07-02 00:31:11,462 - backend.app - INFO - 🛑 Backend Shutting Down...

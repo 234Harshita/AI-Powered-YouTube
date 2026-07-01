@@ -84,11 +84,8 @@ def health_check():
         )
 
 # Home API
-@app.get("/")
-def home():
-    logger.info("Home endpoint accessed")
+@app.get("/api")
+def api():
     return {
-        "message": "Backend Running Successfully",
-        "timestamp": datetime.utcnow().isoformat(),
-        "version": "1.0"
+        "message": "Backend Running Successfully"
     }
