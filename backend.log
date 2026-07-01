@@ -1,0 +1,377 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\venv\Lib\site-packages\click\core.py", line 1569, in __call__
+    return self.main(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\venv\Lib\site-packages\click\core.py", line 1490, in main
+    rv = self.invoke(ctx)
+  File "C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\venv\Lib\site-packages\click\core.py", line 1353, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\venv\Lib\site-packages\click\core.py", line 907, in invoke
+    return callback(*args, **kwargs)
+  File "C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\venv\Lib\site-packages\uvicorn\main.py", line 441, in main
+    run(
+    ~~~^
+        app,
+        ^^^^
+    ...<48 lines>...
+        reset_contextvars=reset_contextvars,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\venv\Lib\site-packages\uvicorn\main.py", line 609, in run
+    config.load_app()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\venv\Lib\site-packages\uvicorn\config.py", line 415, in load_app
+    return import_from_string(self.app)
+  File "C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\venv\Lib\site-packages\uvicorn\importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1395, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1023, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\backend\app.py", line 17, in <module>
+    logging.FileHandler('backend.log', encoding='utf-8')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\logging\__init__.py", line 1219, in __init__
+    StreamHandler.__init__(self, self._open())
+                                 ~~~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\Lib\logging\__init__.py", line 1248, in _open
+    return open_func(self.baseFilename, self.mode,
+                     encoding=self.encoding, errors=self.errors)
+PermissionError: [Errno 13] Permission denied: 'C:\\Users\\ViHarshita tripathi\\Desktop\\AI-Powered-YouTube\\backend.log'
+2026-07-01 10:29:02,444 - backend.app - INFO - ============================================================
+2026-07-01 10:29:02,444 - backend.app - INFO - 🚀 Backend Starting Up...
+2026-07-01 10:29:02,444 - backend.app - INFO - ============================================================
+2026-07-01 10:29:02,445 - backend.database - INFO - Initializing database at C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\youtube.db
+2026-07-01 10:29:02,449 - backend.database - INFO - ✅ Database initialized successfully
+2026-07-01 10:29:02,449 - backend.app - INFO - ✅ Database initialized successfully
+2026-07-01 10:29:18,999 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:19,013 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:19,015 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:19,161 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:19,166 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:19,170 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:19,498 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:19,510 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:19,514 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:19,904 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:19,912 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:19,914 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:20,306 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:20,314 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:20,316 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:20,723 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:20,730 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:20,735 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:21,101 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:21,110 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:21,113 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:21,535 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:21,542 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:21,546 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:21,924 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:21,931 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:21,937 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:22,356 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:22,365 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:22,372 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:22,761 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:22,769 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:22,773 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:23,178 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:23,188 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:23,196 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:23,596 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:23,607 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:23,612 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:23,996 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:24,002 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:24,004 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:24,402 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:29:24,414 - backend.routes.predict - INFO - History request received
+2026-07-01 10:29:24,416 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:29:41,449 - backend.app - INFO - 🛑 Backend Shutting Down...
+2026-07-01 10:29:58,225 - backend.app - INFO - ============================================================
+2026-07-01 10:29:58,225 - backend.app - INFO - 🚀 Backend Starting Up...
+2026-07-01 10:29:58,226 - backend.app - INFO - ============================================================
+2026-07-01 10:29:58,226 - backend.database - INFO - Initializing database at C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\youtube.db
+2026-07-01 10:29:58,230 - backend.database - INFO - ✅ Database initialized successfully
+2026-07-01 10:29:58,231 - backend.app - INFO - ✅ Database initialized successfully
+2026-07-01 10:30:19,510 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:19,526 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:19,530 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:19,694 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:19,705 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:19,710 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:20,047 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:20,056 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:20,062 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:20,455 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:20,463 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:20,467 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:20,841 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:20,852 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:20,858 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:21,251 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:21,266 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:21,272 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:21,667 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:21,675 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:21,680 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:22,099 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:22,108 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:22,112 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:22,497 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:22,505 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:22,511 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:22,919 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:22,931 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:22,937 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:23,319 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:23,328 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:23,333 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:23,731 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:23,740 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:23,745 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:24,132 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:24,143 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:24,148 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:24,550 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:24,557 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:24,559 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:24,974 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:24,980 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:24,990 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:25,397 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:25,405 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:25,411 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:25,801 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:25,810 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:25,814 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:26,212 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:26,225 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:26,230 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:26,593 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:26,597 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:26,600 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:27,013 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:27,023 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:27,028 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:27,440 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:27,449 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:27,455 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:27,813 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:27,826 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:27,833 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:28,243 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:28,252 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:28,256 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:28,628 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:28,640 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:28,644 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:29,055 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:29,064 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:29,067 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:29,442 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:29,453 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:29,458 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:29,884 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:29,897 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:29,906 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:30,274 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:30,283 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:30,288 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:36,473 - backend.app - INFO - ✅ Health check passed
+2026-07-01 10:30:36,494 - backend.routes.predict - INFO - History request received
+2026-07-01 10:30:36,496 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 10:30:46,164 - backend.app - INFO - 🛑 Backend Shutting Down...
+2026-07-01 12:49:51,913 - backend.app - INFO - ============================================================
+2026-07-01 12:49:51,914 - backend.app - INFO - 🚀 Backend Starting Up...
+2026-07-01 12:49:51,915 - backend.app - INFO - ============================================================
+2026-07-01 12:49:51,915 - backend.database - INFO - Initializing database at C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\youtube.db
+2026-07-01 12:49:51,922 - backend.database - INFO - ✅ Database initialized successfully
+2026-07-01 12:49:51,922 - backend.app - INFO - ✅ Database initialized successfully
+2026-07-01 12:50:28,139 - backend.app - INFO - ✅ Health check passed
+2026-07-01 12:50:28,149 - backend.routes.predict - INFO - History request received
+2026-07-01 12:50:28,151 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 12:51:03,273 - backend.routes.predict - INFO - Stats request received
+2026-07-01 12:51:03,275 - backend.routes.predict - INFO - ✅ Stats retrieved: total=17, avg=83305
+2026-07-01 12:51:03,283 - backend.routes.predict - INFO - History request received
+2026-07-01 12:51:03,285 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 12:51:56,545 - backend.app - INFO - ✅ Health check passed
+2026-07-01 12:51:56,557 - backend.routes.predict - INFO - History request received
+2026-07-01 12:51:56,559 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:07:33,254 - backend.app - INFO - ============================================================
+2026-07-01 13:07:33,255 - backend.app - INFO - 🚀 Backend Starting Up...
+2026-07-01 13:07:33,255 - backend.app - INFO - ============================================================
+2026-07-01 13:07:33,255 - backend.database - INFO - Initializing database at C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\youtube.db
+2026-07-01 13:07:33,263 - backend.database - INFO - ✅ Database initialized successfully
+2026-07-01 13:07:33,264 - backend.app - INFO - ✅ Database initialized successfully
+2026-07-01 13:07:33,413 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:07:49,450 - backend.routes.predict - INFO - Stats request received
+2026-07-01 13:07:49,451 - backend.routes.predict - INFO - ✅ Stats retrieved: total=17, avg=83305
+2026-07-01 13:07:49,479 - backend.routes.predict - INFO - History request received
+2026-07-01 13:07:49,480 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:07:51,004 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:07:51,017 - backend.routes.predict - INFO - History request received
+2026-07-01 13:07:51,026 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:36:05,752 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:36:05,800 - backend.routes.predict - INFO - History request received
+2026-07-01 13:36:05,817 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:36:17,678 - backend.routes.predict - INFO - Stats request received
+2026-07-01 13:36:17,869 - backend.routes.predict - INFO - ✅ Stats retrieved: total=17, avg=83305
+2026-07-01 13:36:18,070 - backend.routes.predict - INFO - History request received
+2026-07-01 13:36:18,103 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:36:27,636 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:36:27,917 - backend.routes.predict - INFO - History request received
+2026-07-01 13:36:28,002 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:36:39,937 - backend.routes.predict - INFO - Stats request received
+2026-07-01 13:36:40,135 - backend.routes.predict - INFO - ✅ Stats retrieved: total=17, avg=83305
+2026-07-01 13:36:40,310 - backend.routes.predict - INFO - History request received
+2026-07-01 13:36:40,600 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:36:45,300 - backend.routes.predict - INFO - History request received
+2026-07-01 13:36:45,335 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:36:46,954 - backend.routes.predict - INFO - History request received
+2026-07-01 13:36:46,980 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:36:48,185 - backend.routes.predict - INFO - History request received
+2026-07-01 13:36:48,216 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:12,755 - backend.app - INFO - ============================================================
+2026-07-01 13:47:12,755 - backend.app - INFO - 🚀 Backend Starting Up...
+2026-07-01 13:47:12,755 - backend.app - INFO - ============================================================
+2026-07-01 13:47:12,756 - backend.database - INFO - Initializing database at C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\youtube.db
+2026-07-01 13:47:12,761 - backend.database - INFO - ✅ Database initialized successfully
+2026-07-01 13:47:12,761 - backend.app - INFO - ✅ Database initialized successfully
+2026-07-01 13:47:29,502 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:29,545 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:29,553 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:29,840 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:29,865 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:29,880 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:30,391 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:30,415 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:30,423 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:31,705 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:31,796 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:31,807 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:32,113 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:32,154 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:32,170 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:32,463 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:32,483 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:32,485 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:32,854 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:32,880 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:32,903 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:33,248 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:33,268 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:33,299 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:33,701 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:33,727 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:33,782 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:34,118 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:34,134 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:34,147 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:34,505 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:34,547 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:34,559 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:34,934 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:34,941 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:34,948 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:35,313 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:35,319 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:35,330 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:35,709 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:35,714 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:35,720 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:36,123 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:36,161 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:36,182 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:36,559 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:36,565 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:36,571 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:36,965 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:36,972 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:36,979 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:37,368 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:37,381 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:37,423 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:37,817 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:37,864 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:37,895 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:38,254 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:38,286 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:38,315 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:38,693 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:38,723 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:38,736 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:39,069 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:39,081 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:39,090 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:47:40,232 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:47:40,273 - backend.routes.predict - INFO - History request received
+2026-07-01 13:47:40,289 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:49:45,515 - backend.app - INFO - ============================================================
+2026-07-01 13:49:45,516 - backend.app - INFO - 🚀 Backend Starting Up...
+2026-07-01 13:49:45,516 - backend.app - INFO - ============================================================
+2026-07-01 13:49:45,516 - backend.database - INFO - Initializing database at C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\youtube.db
+2026-07-01 13:49:45,518 - backend.database - INFO - ✅ Database initialized successfully
+2026-07-01 13:49:45,518 - backend.app - INFO - ✅ Database initialized successfully
+2026-07-01 13:50:13,264 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:50:13,346 - backend.routes.predict - INFO - History request received
+2026-07-01 13:50:13,348 - backend.routes.predict - INFO - ✅ History retrieved: 17 records
+2026-07-01 13:51:26,693 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:51:26,702 - backend.routes.predict - INFO - Prediction request received from subscriber: 34
+2026-07-01 13:51:26,702 - backend.routes.predict - INFO - Loading model from C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\backend\models\model.pkl
+2026-07-01 13:51:29,846 - backend.routes.predict - INFO - ✅ Model loaded successfully
+2026-07-01 13:51:29,846 - backend.routes.predict - INFO - Loading features from C:\Users\ViHarshita tripathi\Desktop\AI-Powered-YouTube\backend\models\features.pkl
+2026-07-01 13:51:29,847 - backend.routes.predict - INFO - ✅ Features loaded successfully (19 features)
+2026-07-01 13:51:29,886 - backend.routes.predict - INFO - ✅ Prediction successful: 95701 views
+2026-07-01 13:51:29,904 - backend.routes.predict - INFO - ✅ Prediction saved to database
+2026-07-01 13:51:29,915 - backend.routes.predict - INFO - History request received
+2026-07-01 13:51:29,928 - backend.routes.predict - INFO - ✅ History retrieved: 18 records
+2026-07-01 13:56:23,684 - backend.app - INFO - ✅ Health check passed
+2026-07-01 13:56:23,692 - backend.routes.predict - INFO - Prediction request received from subscriber: 34
+2026-07-01 13:56:23,705 - backend.routes.predict - INFO - ✅ Prediction successful: 95701 views
+2026-07-01 13:56:23,712 - backend.routes.predict - INFO - ✅ Prediction saved to database
+2026-07-01 13:56:23,724 - backend.routes.predict - INFO - History request received
+2026-07-01 13:56:23,726 - backend.routes.predict - INFO - ✅ History retrieved: 19 records
+2026-07-01 14:04:41,084 - backend.app - INFO - ✅ Health check passed
+2026-07-01 14:04:41,093 - backend.routes.predict - INFO - Prediction request received from subscriber: 34
+2026-07-01 14:04:41,114 - backend.routes.predict - INFO - ✅ Prediction successful: 106648 views
+2026-07-01 14:04:41,117 - backend.routes.predict - INFO - ✅ Prediction saved to database
+2026-07-01 14:04:41,133 - backend.routes.predict - INFO - History request received
+2026-07-01 14:04:41,135 - backend.routes.predict - INFO - ✅ History retrieved: 20 records
+2026-07-01 14:04:52,678 - backend.routes.predict - INFO - Prediction request received from subscriber: 34
+2026-07-01 14:04:52,700 - backend.routes.predict - INFO - ✅ Prediction successful: 106648 views
+2026-07-01 14:04:52,703 - backend.routes.predict - INFO - ✅ Prediction saved to database
+2026-07-01 14:04:52,734 - backend.routes.predict - INFO - History request received
+2026-07-01 14:04:52,740 - backend.routes.predict - INFO - ✅ History retrieved: 21 records
+2026-07-01 14:05:03,328 - backend.routes.predict - INFO - Prediction request received from subscriber: 34
+2026-07-01 14:05:03,351 - backend.routes.predict - INFO - ✅ Prediction successful: 104729 views
+2026-07-01 14:05:03,357 - backend.routes.predict - INFO - ✅ Prediction saved to database
+2026-07-01 14:05:03,369 - backend.routes.predict - INFO - History request received
+2026-07-01 14:05:03,375 - backend.routes.predict - INFO - ✅ History retrieved: 22 records
+2026-07-01 14:05:14,814 - backend.routes.predict - INFO - Prediction request received from subscriber: 34
+2026-07-01 14:05:14,826 - backend.routes.predict - INFO - ✅ Prediction successful: 114561 views
+2026-07-01 14:05:14,831 - backend.routes.predict - INFO - ✅ Prediction saved to database
+2026-07-01 14:05:14,845 - backend.routes.predict - INFO - History request received
+2026-07-01 14:05:14,847 - backend.routes.predict - INFO - ✅ History retrieved: 23 records
+2026-07-01 14:05:26,072 - backend.routes.predict - INFO - Prediction request received from subscriber: 34
+2026-07-01 14:05:26,086 - backend.routes.predict - INFO - ✅ Prediction successful: 100456 views
+2026-07-01 14:05:26,097 - backend.routes.predict - INFO - ✅ Prediction saved to database
+2026-07-01 14:05:26,114 - backend.routes.predict - INFO - History request received
+2026-07-01 14:05:26,116 - backend.routes.predict - INFO - ✅ History retrieved: 24 records
+2026-07-01 14:08:16,731 - backend.app - INFO - ✅ Health check passed
+2026-07-01 14:08:16,758 - backend.routes.predict - INFO - History request received
+2026-07-01 14:08:16,761 - backend.routes.predict - INFO - ✅ History retrieved: 24 records

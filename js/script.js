@@ -1,12 +1,202 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("predictForm");
+/**
+ * Home page API utilities
+ */
 
-    if (!form) {
+const STORAGE_KEY = "preferred-backend-url";
+const API_BASES = [
+    window.__API_BASE__,
+    `http://${window.location.hostname}:8000`,
+    "http://localhost:8000",
+    "http://127.0.0.1:8000"
+].filter(Boolean);
+
+let backendAvailable = false;
+let currentBackendUrl = null;
+let hasConnectedBefore = false;
+let lastSuccessfulProbe = 0;
+
+function persistBackendUrl(base) {
+    if (!base) return;
+    try {
+        window.localStorage.setItem(STORAGE_KEY, base);
+    } catch (error) {
+        console.debug("Could not persist backend URL:", error);
+    }
+}
+
+function getStoredBackendUrl() {
+    try {
+        return window.localStorage.getItem(STORAGE_KEY) || null;
+    } catch (error) {
+        return null;
+    }
+}
+
+function updateConnectionStatus(isConnected, label = null) {
+    const statusIndicator = document.getElementById("backend-status");
+    if (!statusIndicator) return;
+
+    const text = label || (isConnected ? "🟢 Backend Connected" : "🔴 Backend Disconnected");
+    statusIndicator.textContent = text;
+    statusIndicator.classList.toggle("connected", isConnected);
+}
+
+async function findWorkingBackend(force = false) {
+    const storedBackendUrl = getStoredBackendUrl();
+    const candidateBases = storedBackendUrl ? [storedBackendUrl, ...API_BASES.filter(base => base !== storedBackendUrl)] : API_BASES;
+
+    if (!force && currentBackendUrl && backendAvailable && Date.now() - lastSuccessfulProbe < 60000) {
+        updateConnectionStatus(true);
+        return currentBackendUrl;
+    }
+
+    for (const base of candidateBases) {
+        try {
+            const response = await fetch(`${base}/health`, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" }
+            });
+
+            if (response.ok) {
+                currentBackendUrl = base;
+                backendAvailable = true;
+                hasConnectedBefore = true;
+                lastSuccessfulProbe = Date.now();
+                persistBackendUrl(base);
+                updateConnectionStatus(true);
+                console.log(`✅ Backend found at: ${base}`);
+                return base;
+            }
+        } catch (error) {
+            console.debug(`Cannot reach backend at ${base}:`, error.message);
+        }
+    }
+
+    if (currentBackendUrl && hasConnectedBefore) {
+        backendAvailable = true;
+        updateConnectionStatus(true, "🟢 Backend Connected");
+        return currentBackendUrl;
+    }
+
+    currentBackendUrl = null;
+    backendAvailable = false;
+    updateConnectionStatus(false);
+    console.warn("❌ No working backend found");
+    return null;
+}
+
+async function requestJson(path, options = {}, maxRetries = 3) {
+    let lastError = null;
+
+    if (!currentBackendUrl || !backendAvailable || Date.now() - lastSuccessfulProbe > 60000) {
+        const workingBackend = await findWorkingBackend();
+        if (!workingBackend) {
+            throw new Error("Backend connection failed. Start the backend with: python -m uvicorn backend.app:app --reload");
+        }
+    }
+
+    for (let attempt = 1; attempt <= maxRetries; attempt += 1) {
+        try {
+            const response = await fetch(`${currentBackendUrl}${path}`, {
+                ...options,
+                headers: {
+                    "Content-Type": "application/json",
+                    ...(options.headers || {})
+                }
+            });
+
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                throw new Error(data.detail || data.error || `HTTP ${response.status}`);
+            }
+
+            backendAvailable = true;
+            hasConnectedBefore = true;
+            lastSuccessfulProbe = Date.now();
+            updateConnectionStatus(true);
+            return data;
+        } catch (error) {
+            lastError = error;
+            console.error(`❌ Attempt ${attempt} failed:`, error.message);
+
+            if (attempt < maxRetries) {
+                const delayMs = Math.pow(2, attempt - 1) * 500;
+                await new Promise(resolve => setTimeout(resolve, delayMs));
+            }
+        }
+    }
+
+    if (currentBackendUrl && hasConnectedBefore) {
+        updateConnectionStatus(true, "🟢 Backend Connected");
+        return null;
+    }
+
+    updateConnectionStatus(false);
+    throw lastError || new Error("Backend connection failed");
+}
+
+async function loadHistory() {
+    try {
+        const data = await requestJson("/history", {}, 2);
+        const tbody = document.querySelector("#historyTable tbody");
+        if (!tbody) return;
+
+        tbody.innerHTML = "";
+
+        if (!Array.isArray(data) || data.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="3" style="text-align: center; color: #999;">No predictions yet</td>
+                </tr>
+            `;
+            return;
+        }
+
+        data.forEach(item => {
+            tbody.innerHTML += `
+                <tr>
+                    <td>${Number(item.subscriber_count || 0).toLocaleString()}</td>
+                    <td>${Number(item.likes || 0).toLocaleString()}</td>
+                    <td>${Number(item.predicted_views || 0).toLocaleString()}</td>
+                </tr>
+            `;
+        });
+    } catch (error) {
+        console.error("Failed to load history:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const form = document.getElementById("predictForm");
+    const statusEl = document.getElementById("status");
+    const predictionEl = document.getElementById("prediction");
+
+    if (!document.getElementById("backend-status")) {
+        const header = document.querySelector("nav h3");
+        if (header) {
+            const statusDiv = document.createElement("div");
+            statusDiv.id = "backend-status";
+            statusDiv.className = "backend-status-pill";
+            header.appendChild(statusDiv);
+        }
+    }
+
+    await findWorkingBackend();
+
+    setInterval(async () => {
+        if (!backendAvailable || !currentBackendUrl) {
+            await findWorkingBackend();
+        }
+    }, 10000);
+
+    if (!form || !statusEl || !predictionEl) {
+        console.warn("Home page prediction elements not found");
         return;
     }
 
-    form.addEventListener("submit", async function (e) {
-        e.preventDefault();
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
         const data = {
             title_length: Number(document.getElementById("title_length").value),
@@ -23,76 +213,37 @@ document.addEventListener("DOMContentLoaded", () => {
             viral_score: Number(document.getElementById("viral_score").value)
         };
 
-        const statusEl = document.getElementById("status");
-        const predictionEl = document.getElementById("prediction");
-
-        statusEl.textContent = "Predicting...";
+        statusEl.textContent = "⏳ Predicting...";
         predictionEl.textContent = "—";
+        predictionEl.classList.remove("is-updated");
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/predict", {
+            const result = await requestJson("/predict", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)
-            });
-
-            const result = await response.json();
-
-            if (!response.ok) {
-                throw new Error(result.detail || result.error || "Prediction failed");
-            }
+            }, 3);
 
             const views = Number(result["Predicted Views"]);
             predictionEl.textContent = views.toLocaleString();
+            predictionEl.classList.add("is-updated");
 
             if (views > 500000) {
                 statusEl.textContent = "🔥 Viral Video Expected";
-            }
-            else if (views > 200000) {
+            } else if (views > 200000) {
                 statusEl.textContent = "🚀 High Growth Expected";
-            }
-            else {
+            } else {
                 statusEl.textContent = "👍 Good Performance";
             }
 
-            loadHistory();
-        }
-        catch (error) {
-            console.error(error);
-            statusEl.textContent = "Backend connection failed";
+            await loadHistory();
+        } catch (error) {
+            console.error("Prediction failed:", error);
+            statusEl.textContent = "❌ Backend connection failed";
             predictionEl.textContent = "Error";
-            alert("Backend connection failed. Start the server with: python -m uvicorn backend.app:app --reload");
+            alert("Backend is not reachable. Start it with: python -m uvicorn backend.app:app --reload");
         }
     });
 
-    loadHistory();
+    await loadHistory();
 });
-
-async function loadHistory() {
-    try {
-        const response = await fetch("http://127.0.0.1:8000/history");
-        const data = await response.json();
-        const tbody = document.querySelector("#historyTable tbody");
-
-        if (!tbody) {
-            return;
-        }
-
-        tbody.innerHTML = "";
-
-        data.forEach(item => {
-            tbody.innerHTML += `
-                <tr>
-                    <td>${item.subscriber_count}</td>
-                    <td>${item.likes}</td>
-                    <td>${item.predicted_views}</td>
-                </tr>
-            `;
-        });
-    }
-    catch (error) {
-        console.error(error);
-    }
-}

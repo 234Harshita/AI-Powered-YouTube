@@ -7,3 +7,5 @@ xgboost
 joblib
 openpyxl
 python-multipart
+pytest
+httpx2

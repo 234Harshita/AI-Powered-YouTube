@@ -11,9 +11,10 @@ body {
     align-items: center;
     justify-content: center;
     background: radial-gradient(circle at top, rgba(248, 113, 113, 0.18), transparent 20%),
-                linear-gradient(135deg, #08060b 0%, #220808 40%, #3d0b0d 100%);
+        linear-gradient(135deg, #08060b 0%, #220808 40%, #3d0b0d 100%);
     color: white;
     position: relative;
+    overflow-x: hidden;
 }
 
 body::before {
@@ -27,10 +28,13 @@ body::before {
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.8;
         transform: scale(1);
     }
+
     50% {
         opacity: 1;
         transform: scale(1.02);
@@ -112,4 +116,34 @@ button:hover {
 
 #prediction {
     color: #f87171;
+    animation: glowText 1.8s ease-in-out infinite;
+}
+
+.backend-status-pill {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.backend-status-pill.connected {
+    background: rgba(76, 175, 80, 0.18);
+    color: #b7f7c0;
+}
+
+@keyframes glowText {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.95;
+    }
+
+    50% {
+        transform: scale(1.03);
+        opacity: 1;
+    }
 }

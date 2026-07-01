@@ -74,6 +74,32 @@
             }
         }
 
+        @keyframes floatOrb {
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+            }
+
+            50% {
+                transform: translateY(-10px) scale(1.04);
+            }
+        }
+
+        @keyframes pulseNumber {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.95;
+            }
+
+            50% {
+                transform: scale(1.04);
+                opacity: 1;
+            }
+        }
+
         /* ===== Navbar ===== */
         nav {
             display: flex;
@@ -163,6 +189,38 @@
             border: 1px solid rgba(248, 113, 113, 0.18);
         }
 
+        .hero-card {
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(248, 113, 113, 0.2);
+            color: #fecaca;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hero-orb {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(248, 113, 113, 0.15), transparent 70%);
+            animation: floatOrb 4s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
         .result-card {
             text-align: center;
         }
@@ -170,6 +228,23 @@
         #prediction {
             font-size: 48px;
             color: #f87171;
+            animation: pulseNumber 1.8s ease-in-out infinite;
+        }
+
+        .backend-status-pill {
+            display: inline-block;
+            margin-left: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.14);
+            color: #fee2e2;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .backend-status-pill.connected {
+            background: rgba(76, 175, 80, 0.2);
+            color: #b7f7c0;
         }
 
         /* ===== Table ===== */
@@ -210,9 +285,15 @@
 
     <div class="container">
 
-        <div class="card">
-            <h1>🎥 AI Powered YouTube Analytics</h1>
-            <p>Predict YouTube Video Views using Machine Learning</p>
+        <div class="card hero-card">
+            <div class="hero-content">
+                <div>
+                    <span class="hero-badge">Live ML Prediction</span>
+                    <h1>🎥 AI Powered YouTube Analytics</h1>
+                    <p>Predict YouTube video views instantly with a smooth, connected experience.</p>
+                </div>
+                <div class="hero-orb"></div>
+            </div>
         </div>
 
         <div class="card">
