@@ -9,7 +9,6 @@ from fastapi.staticfiles import StaticFiles
 
 import backend.database
 from backend.routes.predict import router as predict_router
-
 # Configure Logging
 logging.basicConfig(
     level=logging.INFO,
@@ -82,7 +81,9 @@ def health_check():
                 "error": str(e)
             }
         )
-
+@app.get("/dashboard")
+def dashboard():
+    return FileResponse("frontend/dashboard.html")
 # Home API
 @app.get("/api")
 def api():

@@ -1,35 +1,42 @@
 async function fetchDashboardJson(path) {
+
     const storedBackendUrl = (() => {
         try {
             return window.localStorage.getItem("preferred-backend-url") || null;
-        } catch (error) {
+        } catch {
             return null;
         }
     })();
 
-    const candidateBases = storedBackendUrl ? [storedBackendUrl, "http://127.0.0.1:8000", "http://localhost:8000"] : ["http://127.0.0.1:8000", "http://localhost:8000"];
+    const candidateBases = [
+        "https://ai-powered-youtube.onrender.com",
+        storedBackendUrl,
+        `http://${window.location.hostname}:8000`,
+        "http://127.0.0.1:8000",
+        "http://localhost:8000"
+    ].filter(Boolean);
 
     for (const base of candidateBases) {
         try {
             const response = await fetch(`${base}${path}`);
+
             if (!response.ok) continue;
+
             const data = await response.json();
-            if (base && base !== storedBackendUrl) {
-                try {
-                    window.localStorage.setItem("preferred-backend-url", base);
-                } catch (error) {
-                    console.debug("Could not persist backend URL:", error);
-                }
-            }
+
+            try {
+                window.localStorage.setItem("preferred-backend-url", base);
+            } catch {}
+
             return data;
-        } catch (error) {
-            console.debug(`Dashboard probe failed for ${base}:`, error);
+
+        } catch (err) {
+            console.log(`Failed: ${base}`);
         }
     }
 
     throw new Error("Dashboard backend unavailable");
 }
-
 async function loadDashboard() {
     const totalEl = document.getElementById("totalPredictions");
     const averageEl = document.getElementById("averageViews");
