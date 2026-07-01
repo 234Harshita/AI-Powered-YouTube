@@ -4,6 +4,8 @@ from datetime import datetime
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 import backend.database
 from backend.routes.predict import router as predict_router
@@ -23,6 +25,12 @@ app = FastAPI(
     title="AI Powered YouTube Analytics",
     version="1.0"
 )
+app.mount("/css", StaticFiles(directory="css"), name="css")
+app.mount("/js", StaticFiles(directory="js"), name="js")
+
+@app.get("/")
+def home():
+    return FileResponse("frontend/index.html")
 
 # CORS - Allow frontend to connect from any origin
 app.add_middleware(
