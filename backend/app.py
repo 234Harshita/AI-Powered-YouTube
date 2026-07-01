@@ -81,6 +81,11 @@ def health_check():
                 "error": str(e)
             }
         )
+
+@app.get("/dashboard.html")
+def dashboard_html():
+    return FileResponse("frontend/dashboard.html")
+
 @app.get("/dashboard")
 def dashboard():
     return FileResponse("frontend/dashboard.html")
